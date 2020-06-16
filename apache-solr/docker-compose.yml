@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: zookeeper:3.5
+    container_name: zoo_solr
+    restart: always
+    ports:
+      - 2181:2181
+    networks:
+      - solr
+
+  solr:
+    image: solr:8.3
+    container_name: solr
+    ports:
+      - ${EXPOSED_PORT}:8983
+    depends_on:
+      - zookeeper
+    environment:
+      ZK_HOSTS: ${ZK_HOSTS}
+    restart: always
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 800M
+    networks:
+      - solr
+
+networks:
+  solr:

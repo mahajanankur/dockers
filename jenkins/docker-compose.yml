@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:alpine
+    ports:
+      - ${EXPOSED_PORT}:8080
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    # restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  jenkins_home:
