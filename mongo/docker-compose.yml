@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.0
+    ports:
+      - ${EXPOSED_PORT}:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+    volumes:
+      - mongo_data:/data/db
+    # restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  mongo_data:
