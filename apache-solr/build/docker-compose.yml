@@ -11,6 +11,9 @@ services:
       - solr
 
   solr:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: solr:8.3
     container_name: solr
     ports:
