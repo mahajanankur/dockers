@@ -1,5 +1,5 @@
 # dockers
-A collection of some essential binaries in docker. Easy docker compose configuration to start.
+A collection of some essential binaries in docker. Easy and flexible configurations to start.
 
 ### How to run
 Go to the perticular folder and run
