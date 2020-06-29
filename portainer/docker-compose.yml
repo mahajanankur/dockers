@@ -1,9 +1,9 @@
-version: '3'
+version: '3.3'
 
 services:
   portainer:
     container_name: portainer
-    image: portainer/portainer
+    image: portainer/portainer:1.24.0
     restart: always
     ports:
       - "${EXPOSED_PORT}:9000"
@@ -11,6 +11,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G
 
 volumes:
   portainer_data:
