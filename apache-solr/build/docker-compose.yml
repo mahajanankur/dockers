@@ -22,7 +22,7 @@ services:
       - zookeeper
     environment:
       ZK_HOSTS: ${ZK_HOSTS}
-      SOLR_JAVA_MEM: "-Xms2g -Xmx2g"
+      SOLR_JAVA_MEM: "-Xms1g -Xmx1g"
     # restart: always
     volumes:
       - solr_data:/var/solr/
@@ -40,7 +40,7 @@ services:
     # deploy:
     #   resources:
     #     limits:
-    #       memory: 800M
+    #       memory: 1500M
     networks:
       - solr
 
