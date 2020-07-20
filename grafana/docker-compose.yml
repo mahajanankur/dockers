@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:1.7
+    ports:
+      - "${INFLUX_EXPOSED_PORT}:8086"
+    environment: 
+      INFLUXDB_ADMIN_USER: admin
+      INFLUXDB_ADMIN_PASSWORD: admin
+    volumes:
+      - influxdb:/var/lib/influxdb
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:7.1.0
+    ports:
+      - "${GRAFANA_EXPOSED_PORT}:3000"
+    environment: 
+      GF_INSTALL_PLUGINS: "http://plugin-domain.com/my-custom-plugin.zip;custom-plugin"
+    volumes:
+      - var_grafana: /var/lib/grafana
+      - etc_grafana: /etc/grafana
+      - grafana_logs: /var/log/grafana
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        
+volumes:
+  influxdb:
+  var_grafana:
+  etc_grafana:
+  grafana_logs:
