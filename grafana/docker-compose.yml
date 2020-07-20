@@ -24,8 +24,8 @@ services:
     image: grafana/grafana:7.1.0
     ports:
       - "${GRAFANA_EXPOSED_PORT}:3000"
-    environment: 
-      GF_INSTALL_PLUGINS: "http://plugin-domain.com/my-custom-plugin.zip;custom-plugin"
+    # environment: 
+    #   GF_INSTALL_PLUGINS: "http://plugin-domain.com/my-custom-plugin.zip;custom-plugin"
     # volumes:
     #   - var_grafana: /var/lib/grafana
     #   - etc_grafana: /etc/grafana
