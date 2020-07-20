@@ -23,7 +23,8 @@ services:
 
   grafana:
     container_name: grafana
-    image: grafana/grafana:7.1.0
+    # image: grafana/grafana:7.1.0
+    image: grafana/grafana:7.1.0-ubuntu
     ports:
       - "${GRAFANA_EXPOSED_PORT}:3000"
     # environment: 
