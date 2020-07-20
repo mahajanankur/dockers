@@ -18,6 +18,8 @@ services:
       resources:
         limits:
           memory: 2G
+    networks:
+      - grafana
 
   grafana:
     container_name: grafana
@@ -34,9 +36,14 @@ services:
       resources:
         limits:
           memory: 2G
+    networks:
+      - grafana
         
 volumes:
   influxdb:
   var_grafana:
   etc_grafana:
   grafana_logs:
+
+networks:
+  grafana:
