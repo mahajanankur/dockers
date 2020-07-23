@@ -33,7 +33,7 @@ services:
     environment:
       ELASTICSEARCH_URL: http://es01:9200
       ELASTICSEARCH_HOSTS: http://es01:9200
-      xpack.security.enabled: true
+      xpack.security.enabled: "true"
       ELASTICSEARCH_USERNAME: elastic
       ELASTICSEARCH_PASSWORD: kibana123
     networks:
