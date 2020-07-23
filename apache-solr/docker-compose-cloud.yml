@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: zookeeper:3.5
+    container_name: zoo_solr
+    restart: always
+    ports:
+      - ${ZOO_EXPOSED_PORT}:2181
+    networks:
+      - solr
+
+  solr1:
+    image: solr:8.3
+    container_name: solr1
+    ports:
+      - ${SOLR_EXPOSED_PORT}:8983
+    depends_on:
+      - zookeeper
+    environment:
+      ZK_HOSTS: ${ZK_HOSTS}
+      SOLR_JAVA_MEM: "-Xms2g -Xmx2g"
+    # restart: always
+    volumes:
+      - solr_data1:/var/solr/
+    # command: sh -c "solr start -c -f"
+    command: sh -c "solr start -e cloud -noprompt"
+      # - solr-precreate
+      # - gettingstarted
+      # - solr start -f -c -e cloud
+    # entrypoint:
+    #   - docker-entrypoint.sh
+    #   - solr
+    #   - start
+    #   - -c
+    #   - -f
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 800M
+    networks:
+      - solr
+
+  solr2:
+    image: solr:8.3
+    container_name: solr2
+    ports:
+      - 9983:9983
+    depends_on:
+      - zookeeper
+    environment:
+      ZK_HOSTS: ${ZK_HOSTS}
+      SOLR_JAVA_MEM: "-Xms2g -Xmx2g"
+    # restart: always
+    volumes:
+      - solr_data2:/var/solr/
+    # command: sh -c "solr start -c -f"
+    command: sh -c "solr start -e cloud -noprompt"
+      # - solr-precreate
+      # - gettingstarted
+      # - solr start -f -c -e cloud
+    # entrypoint:
+    #   - docker-entrypoint.sh
+    #   - solr
+    #   - start
+    #   - -c
+    #   - -f
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 800M
+    networks:
+      - solr
+networks:
+  solr:
+    
+volumes:
+  solr_data1:
+  solr_data2:
