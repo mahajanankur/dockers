@@ -8,10 +8,12 @@ services:
       - node.name=es01
       - cluster.name=es-docker-cluster
       # - discovery.seed_hosts=es02,es03
-      # - cluster.initial_master_nodes=es01,es02,es03
+      - cluster.initial_master_nodes=es01
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
-      # - xpack.security.enabled=true
+      - xpack.security.enabled=true
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=kibana123
     ulimits:
       memlock:
         soft: -1
@@ -31,6 +33,9 @@ services:
     environment:
       ELASTICSEARCH_URL: http://es01:9200
       ELASTICSEARCH_HOSTS: http://es01:9200
+      xpack.security.enabled: true
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: kibana123
     networks:
       - elastic
 
