@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    image: elasticsearch:7.8.0
     container_name: es01
     environment:
       - node.name=es01
@@ -24,7 +24,7 @@ services:
       - elastic
 
   es02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    image: elasticsearch:7.8.0
     container_name: es02
     environment:
       - node.name=es02
@@ -46,7 +46,7 @@ services:
       - elastic
 
   es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    image: elasticsearch:7.8.0
     container_name: es03
     environment:
       - node.name=es03
@@ -68,13 +68,13 @@ services:
       - elastic
 
   kib01:
-    image: docker.elastic.co/kibana/kibana:7.8.0
+    image: kibana:7.8.0
     container_name: kib01
     ports:
       - 5601:5601
     environment:
       ELASTICSEARCH_URL: http://es01:9200
-      ELASTICSEARCH_HOSTS: http://es01:9200
+      ELASTICSEARCH_HOSTS: http://es01:9200,http://es02:9200,http://es03:9200
     networks:
       - elastic
 
