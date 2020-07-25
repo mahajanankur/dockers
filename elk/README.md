@@ -11,4 +11,5 @@ Note them down and keep them somewhere safe and exit the container by Ctrl+D
 Open http://localhost:5601 you will see the Kibana console but now it will ask for username and password.
 
 Username: elastic
+
 Password: Get from above command.
