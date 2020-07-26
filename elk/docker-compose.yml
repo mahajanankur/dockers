@@ -29,7 +29,7 @@ services:
     ports:
       - 9200:9200
     networks:
-      - elastic
+      - shared_network
 
   kib01:
     image: kibana:7.8.0
@@ -42,11 +42,11 @@ services:
       - ELASTICSEARCH_USERNAME=kibana
       - ELASTICSEARCH_PASSWORD=DWOz7StWTtt7fFVMhiWm
     networks:
-      - elastic
+      - shared_network
 
 volumes:
   data01:
 
 networks:
-  elastic:
-    driver: bridge
+  shared_network:
+    # driver: bridge
