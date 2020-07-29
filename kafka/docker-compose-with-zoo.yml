@@ -1,13 +1,30 @@
 version: "3"
 services:
+  zookeeper:
+    container_name: zookeeper
+    image: zookeeper:${ZOOKEEPER_VERSION}
+    ports:
+      - 2181:2181
+    restart: always
+    volumes:
+      # - zoo_data_dir:/data
+      # - zoo_data_logs_dir:/datalog
+      - zoo_log_dir:/logs
+    networks:
+      - shared_network
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
   kafka:
     container_name: kafka
     image: ${KAFKA}
     ports:
       - 9092:9092
       - 9093:9093
-    # depends_on:
-    #   - zookeeper
+    depends_on:
+      - zookeeper
     environment:
       #KAFKA_ADVERTISED_HOST_NAME: kafka
       # KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9092,OUTSIDE://localhost:9093
@@ -39,7 +56,12 @@ services:
       - shared_network
 
 volumes:
+  # zoo_data_dir:
+  # zoo_data_logs_dir:
+  zoo_log_dir:
   kafkaData:
 
 networks:
   shared_network:
+    external:
+      name: shared_network

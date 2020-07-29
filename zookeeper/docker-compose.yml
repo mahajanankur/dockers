@@ -1,0 +1,26 @@
+version: "3"
+services:
+  zookeeper:
+    container_name: zookeeper
+    image: zookeeper:${ZOOKEEPER_VERSION}
+    ports:
+      - 2181:2181
+    restart: always
+    volumes:
+      # - zoo_data_dir:/data
+      # - zoo_data_logs_dir:/datalog
+      - zoo_log_dir:/logs
+    networks:
+      - shared_network
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  # zoo_data_dir:
+  # zoo_data_logs_dir:
+  zoo_log_dir:
+
+networks:
+  shared_network:
