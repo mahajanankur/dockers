@@ -18,3 +18,6 @@ services:
           memory: 800M
     networks:
       - shared_network
+
+networks:
+  shared_network:
