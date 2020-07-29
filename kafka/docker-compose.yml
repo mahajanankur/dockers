@@ -43,3 +43,5 @@ volumes:
 
 networks:
   shared_network:
+    external:
+      name: shared_network
