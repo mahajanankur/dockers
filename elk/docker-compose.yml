@@ -42,8 +42,6 @@ services:
       - ELASTICSEARCH_USERNAME=kibana
       - ELASTICSEARCH_PASSWORD=DWOz7StWTtt7fFVMhiWm
       - xpack.encryptedSavedObjects.encryptionKey=u6744yqeqaav6gmlpembu6744yqeqaav6gmlpemb
-
-
     networks:
       - shared_network
 
@@ -52,4 +50,5 @@ volumes:
 
 networks:
   shared_network:
-    # driver: bridge
+    external:
+      name: shared_network
