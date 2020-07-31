@@ -13,3 +13,7 @@ Open http://localhost:5601 you will see the Kibana console but now it will ask f
 Username: elastic
 
 Password: Get from above command.
+
+##Logstash
+
+> docker run --rm -it -v ~/pipeline/:/usr/share/logstash/pipeline/ logstash:7.8.0

@@ -30,6 +30,7 @@ services:
       - 9200:9200
     networks:
       - shared_network
+    restart: always
 
   kib01:
     image: kibana:7.8.0
@@ -44,6 +45,9 @@ services:
       # - xpack.encryptedSavedObjects.encryptionKey=u6744yqeqaav6gmlpembu6744yqeqaav6gmlpemb
     networks:
       - shared_network
+    restart: always
+    depends_on:
+      - es01
 
 volumes:
   data01:
