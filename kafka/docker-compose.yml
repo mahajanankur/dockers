@@ -28,6 +28,8 @@ services:
       # KAFKA_MESSAGE_MAX_BYTES: 20000000
       # KAFKA_MAX_REQUEST_SIZE: 20000000
       KAFKA_SASL_ENABLED_MECHANISMS: PLAIN
+      # The number of hours to keep a log file before deleting it 
+      KAFKA_LOG_RETENTION_HOURS: 1
     restart: always
     volumes:
       - kafkaData:/kafka
