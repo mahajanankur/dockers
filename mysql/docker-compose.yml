@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - ${EXPOSED_PORT}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hh
+    volumes:
+      - mysql_data:/var/lib/mysql
+    # restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  mysql_data:
