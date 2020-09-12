@@ -1,5 +1,6 @@
-# dockers
-A collection of some essential binaries in docker. Easy and flexible configurations to start.
+# Dockers
+
+**A collection of some essential docker compose.**
 
 Docker, a platform that allows users to easily pack, distribute, and manage applications within containers. In other words, It is an open-source project that automates the deployment of applications inside software containers.
 
@@ -13,8 +14,10 @@ Docker really makes it easier to create, deploy, and run applications by using c
 
 ### How to run
 Go to the perticular binaries folder and run
-
-> docker-compose up
-
-### To Run in compatibility mode
-> docker-compose --compatibility up
+```sh
+docker-compose up
+```
+### Run in compatibility mode
+```sh
+docker-compose --compatibility up
+```
