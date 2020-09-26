@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  elastalert:
+    image: bitsensor/elastalert:latest
+    container_name: elastalert
+    # environment:
+    #   - node.name=es01
+    volumes:
+      - ./config/elastalert.yaml:/opt/elastalert/config.yaml
+      - ./config/config.json:/opt/elastalert-server/config/config.json
+      - ./config/elastalert.yaml:/opt/elastalert/config.yaml
+      - ./rules:/opt/elastalert/rules
+      - ./rule_templates:/opt/elastalert/rule_templates
+    ports:
+      - 3030:3030
+      - 3333:3333
+    networks:
+      - shared_network
+    restart: always
+
+# volumes:
+#   data01:
+
+networks:
+  shared_network:
+    external:
+      name: shared_network
