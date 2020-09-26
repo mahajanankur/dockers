@@ -1,11 +1,15 @@
-1) First time installation:
-    a. bash install.sh <single-node|multi-node>
-
-2) To delete whole setup:
-    It will remove the running container, delete volume.
-    a. bash uninstall.sh 
-
-2) To down/up container without deleting volumes:
-    a. bash start-stop.sh stop
-    b. bash start-stop.sh start-single-node
-    c. bash start-stop.sh start-multi-node
+### First time installation:
+```sh
+bash install.sh <single-node|multi-node>
+```
+### To uninstall whole setup:
+It will remove the running containers and volumes.
+```sh
+bash uninstall.sh 
+```
+### To up/down container without removing volumes:
+```sh
+bash start-stop.sh stop
+bash start-stop.sh start-single-node
+bash start-stop.sh start-multi-node
+```
