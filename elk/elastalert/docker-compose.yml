@@ -2,16 +2,17 @@ version: '3.3'
 
 services:
   elastalert:
-    image: bitsensor/elastalert:latest
+    image: elastalert-python3:latest
+    # image: bitsensor/elastalert:latest
     container_name: elastalert
     # environment:
     #   - node.name=es01
     volumes:
-      - ./config/elastalert.yaml:/opt/elastalert/config.yaml
-      - ./config/config.json:/opt/elastalert-server/config/config.json
-      - ./config/elastalert.yaml:/opt/elastalert/config.yaml
+      - ./configs/elastalert.yaml:/opt/elastalert/config.yaml
+      - ./configs/config.json:/opt/elastalert-server/config/config.json
       - ./rules:/opt/elastalert/rules
       - ./rule_templates:/opt/elastalert/rule_templates
+      - ./certs/:/opt/elastalert/certs
     ports:
       - 3030:3030
       - 3333:3333

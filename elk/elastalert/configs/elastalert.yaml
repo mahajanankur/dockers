@@ -47,3 +47,12 @@ writeback_index: elastalert_status
 # sending the alert until this time period has elapsed
 alert_time_limit:
   days: 2
+
+# xpack configurations
+use_ssl: True
+verify_certs: True
+client_cert: /opt/elastalert/certs/es01.crt
+client_key: /opt/elastalert/certs/es01.key
+ca_certs: /opt/elastalert/certs/ca.crt
+es_username: elastic
+es_password: fXRf72Wz5XGClMoxP2n3
