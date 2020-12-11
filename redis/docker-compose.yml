@@ -1,0 +1,26 @@
+version: "3"
+services:
+  redis:
+    container_name: redis
+    image: redis:${TAG}
+    ports:
+      - ${EXPOSED_PORT}:6379
+    volumes:
+      - redisData:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    hostname: redis
+    restart: always
+    networks:
+      - shared_network
+
+volumes:
+  redisData:
+
+networks:
+  shared_network:
+    external:
+      name: shared_network
