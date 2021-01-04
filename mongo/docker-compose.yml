@@ -16,7 +16,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2G
+          memory: 100M
 
 volumes:
   mongo_data:
