@@ -3,10 +3,12 @@ version: '3.3'
 services:
   portainer:
     container_name: portainer
-    image: portainer/portainer:1.24.0
+    # image: portainer/portainer:1.24.1
+    image: portainer/portainer-ce:2.1.1
     restart: always
     ports:
       - "${EXPOSED_PORT}:9000"
+    # command: -H unix:///var/run/docker.sock --tlsskipverify
     command: -H unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
