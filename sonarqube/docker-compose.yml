@@ -1,0 +1,25 @@
+version: "3.3"
+# https://github.com/SonarSource/docker-sonarqube
+services:
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube:8.6.1-community
+    ports:
+      - "${EXPOSED_PORT}:9000"
+    networks:
+      - sonarnet
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_temp:/opt/sonarqube/temp
+
+networks:
+  sonarnet:
+    driver: bridge
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  sonarqube_temp:
