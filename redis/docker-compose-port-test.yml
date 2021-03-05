@@ -4,7 +4,7 @@ services:
     container_name: port-redis
     image: redis:6.0.9
     ports:
-      - 6380:6379
+      - 10000:6379
     volumes:
       - portRedisData:/data
       - ./redis.conf:/usr/local/etc/redis/redis.conf
