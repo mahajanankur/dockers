@@ -1,0 +1,5 @@
+version: "3"
+services:
+  port-redis:
+    # container_name: port-redis
+    image: redis:6.0.9
