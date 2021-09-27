@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  cerebro:
+    container_name: cerebro
+    image: lmenezes/cerebro:latest
+    ports:
+      - ${EXPOSED_PORT}:9000
+    # restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1G
