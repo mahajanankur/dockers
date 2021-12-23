@@ -17,7 +17,7 @@ LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
 
-echo -e "Welcome to SearchUnify ELK Installer"
+echo -e "Welcome to ELK Installer"
 
 function info()
 {
