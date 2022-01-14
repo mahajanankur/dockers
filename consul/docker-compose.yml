@@ -38,16 +38,17 @@ services:
       - consul
     command: 'agent -bootstrap-expect=3'
 
-  # consul-client:
-  #   image: consul:1.9.3
-  #   container_name: consul-client
-  #   restart: always
-  #   volumes:
-  #     - ./client.json:/consul/config/client.json:ro
-  #     - ./certs/consul-agent-ca.pem:/consul/config/certs/consul-agent-ca.pem:ro
-  #   networks:
-  #     - consul
-  #   command: 'agent'
+  consul-client:
+    image: consul:1.9.3
+    container_name: consul-client
+    restart: always
+    volumes:
+      - ./client.json:/consul/config/client.json:ro
+      # - ./certs/consul-agent-ca.pem:/consul/config/certs/consul-agent-ca.pem:ro
+      - ./certs/:/consul/config/certs/:ro
+    networks:
+      - consul
+    command: 'agent'
 
 networks:
   consul:
