@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  eureka:
+    container_name: eureka
+    build:
+     context: .
+     dockerfile: Dockerfile
+    image: eureka:1.10.17
+    ports:
+      - ${EXPOSED_PORT}:8761
+    # restart: always
+    # volumes:
+    #  - data:/lucene
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    networks:
+      - micro
+
+networks:
+  micro:
+    external:
+      name: micro
+
