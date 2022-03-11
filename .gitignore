@@ -2,3 +2,5 @@
 logs
 *.log
 elk/xpack_test/
+.DS_Store
+.vscode
