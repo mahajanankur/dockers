@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  cassandra:
+    container_name: cassandra
+    image: cassandra:4.0
+    ports:
+      - 9042:9042
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=su
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    networks:
+      - shared_network
+
+volumes:
+  cassandra-data:
+
+networks:
+  shared_network:
+    external:
+      name: shared_network
