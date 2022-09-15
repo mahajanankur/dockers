@@ -1,0 +1,16 @@
+version: '3'
+services:
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.3.0
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601
+    expose:
+      - "5601"
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch-node1:9200"]' # must be a string with no spaces when specified as an environment variable
+    networks:
+      - opensearch-net
+
+networks:
+  opensearch-net:
