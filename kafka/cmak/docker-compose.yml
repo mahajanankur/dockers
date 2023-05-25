@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  cmak:
+    container_name: cmak
+    # image: cmak:${CMAK_VERSION}
+    image: hlebalbau/kafka-manager:3.0.0.5
+    ports:
+      - ${EXPOSED_PORT}:9000
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    environment:
+      APPLICATION_SECRET: ${APPLICATION_SECRET}
+      ZK_HOSTS: ${ZK_HOSTS}
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 800M
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    external:
+      name: shared_network

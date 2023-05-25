@@ -1,0 +1,19 @@
+version: "2"
+services:
+  zoonavigator:
+    container_name: zoonavigator
+    image: elkozmon/zoonavigator:latest
+    ports:
+      - 7894:9000
+    restart: always
+    networks:
+      - shared_network
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+networks:
+  shared_network:
+    external:
+      name: shared_network

@@ -1,0 +1,22 @@
+version: "3"
+services:
+  agendash:
+    container_name: agendash
+    image: agenda/agendash:latest
+    ports:
+      - 3000:3000
+    restart: always
+    environment:
+      MONGODB_URI: mongodb://mongo-search:27017/agenda
+      COLLECTION: agenda
+    networks:
+      - shared_network
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+networks:
+  shared_network:
+    external:
+      name: shared_network

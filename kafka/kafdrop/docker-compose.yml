@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  kafdrop:
+    container_name: kafdrop
+    image: obsidiandynamics/kafdrop:latest
+    ports:
+      - 5555:9000
+    environment:
+      KAFKA_BROKERCONNECT: kafka:9092
+      JMX_PORT: 9999
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 800M
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    external:
+      name: shared_network
