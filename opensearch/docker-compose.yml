@@ -1,10 +1,10 @@
 version: '3'
 services:
   opensearch:
-    image: opensearchproject/opensearch:2.3.0
+    image: opensearchproject/opensearch:2.8.0
     container_name: opensearch-node1
     environment:
-      - cluster.name=searchunify
+      - cluster.name=changeme
       - node.name=opensearch-node1
       - discovery.seed_hosts=opensearch-node1
       - cluster.initial_master_nodes=opensearch-node1
