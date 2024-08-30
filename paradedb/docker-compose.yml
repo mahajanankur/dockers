@@ -1,0 +1,30 @@
+version: '3.3'
+
+services:
+  paradedb:
+    image: paradedb/paradedb:latest
+    container_name: paradedb
+    # network_mode: "host"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - paradedb_data:/var/lib/postgresql/data
+    ports:
+      - "6432:5432"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    networks:
+      - shared_network
+
+volumes:
+  paradedb_data:
+
+networks:
+  shared_network:
+    external:
+      name: shared_network
